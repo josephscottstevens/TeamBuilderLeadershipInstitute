@@ -24,8 +24,7 @@ model =
 
 view model =
     div []
-        [ h4 [] [ text "header" ]
-        , case model.page of
+        [ case model.page of
             Home ->
                 Home.viewHome
 
@@ -34,8 +33,6 @@ view model =
 
             Chat ->
                 Chat.view
-        , a [ href "www.google.com" ] [ text "google" ]
-        , h2 [] [ text "footer" ]
         ]
 
 
