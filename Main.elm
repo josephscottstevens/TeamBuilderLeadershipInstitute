@@ -1,5 +1,6 @@
 module Main exposing (..)
 
+import Chat
 import Home
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -14,10 +15,11 @@ type alias Model =
 type Page
     = Home
     | Contacts
+    | Chat
 
 
 model =
-    { page = Home }
+    { page = Chat }
 
 
 view model =
@@ -29,7 +31,10 @@ view model =
 
             Contacts ->
                 div [] [ text "Contacts body" ]
-        , a [ href "www.google.com"] [text "google"]
+
+            Chat ->
+                Chat.view
+        , a [ href "www.google.com" ] [ text "google" ]
         , h2 [] [ text "footer" ]
         ]
 
