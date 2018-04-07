@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/elm-stuff": true
+    },
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/elm-stuff": true
+    },
+    "editor.formatOnSave": true
+}

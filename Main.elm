@@ -1,10 +1,8 @@
-module Main exposing (..)
-
-import Chat
+module Main exposing (main)
+ 
+import About
 import Home
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
+import Html exposing (Html, div)
 
 
 type alias Model =
@@ -14,37 +12,45 @@ type alias Model =
 
 type Page
     = Home
-    | Contacts
-    | Chat
-
-
-model =
-    { page = Chat }
-
-
-view model =
-    div []
-        [ case model.page of
-            Home ->
-                Home.viewHome
-
-            Contacts ->
-                div [] [ text "Contacts body" ]
-
-            Chat ->
-                Chat.view
-        ]
+    | About
 
 
 type Msg
     = NoMsg
 
 
+init : ( Model, Cmd Msg )
+init =
+    ( { page = Home }, Cmd.none )
+
+
+view : Model -> Html msg
+view model =
+    case model.page of
+        Home ->
+            Home.view
+
+        About ->
+            About.view
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         NoMsg ->
-            model
+            ( model, Cmd.none )
 
 
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+main : Program Never Model Msg
 main =
-    beginnerProgram { model = model, view = view, update = update }
+    Html.program
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
